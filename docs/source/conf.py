@@ -11,11 +11,6 @@ version = '1.0'
 
 html_last_updated_fmt = "%Y/%m/%d"
 
-# These are options specifically for the Wagtail Theme.
-html_theme_options = {
-  "Github": 'https://github.com/Eineon/PalEnd',
-}
-
 # -- General configuration
 
 extensions = [
