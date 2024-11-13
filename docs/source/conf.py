@@ -3,10 +3,10 @@
 # -- Project information
 
 project = '无色物语'
-release = '~ End of The Shining World ~'
-version = '1.0'
 copyright = '2024, ネオン様'
 author = 'Eineon'
+release = '~ End of The Shining World ~'
+version = '1.0'
 
 html_last_updated_fmt = "%Y/%m/%d"
 
