@@ -4,8 +4,8 @@
 ..  toctree::
     :maxdepth: 2
 
-    第一章
-    第二章
-    第三章
+    P1
+    P2
+    P3
     DB
     

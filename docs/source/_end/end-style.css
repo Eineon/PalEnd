@@ -1,6 +1,7 @@
 
 h1 {
   font-size: 32px;
+  border-bottom: 1px solid;
 }
 h2 {
   font-size: 26px;
