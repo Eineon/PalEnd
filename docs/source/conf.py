@@ -3,9 +3,10 @@
 # -- Project information
 
 project = '无色物语'
+release = '~ End of The Shining World ~'
+version = '1.0'
 copyright = '2024, ネオン様'
 author = 'Eineon'
-version = '1.0'
 
 html_last_updated_fmt = "%Y/%m/%d"
 
@@ -32,7 +33,6 @@ templates_path = ['_templates']
 
 # -- Options for HTML output
 html_theme = 'sphinx_material'
-html_short_title = "无色物语 ~ End of The Shining World ~"
 
 html_static_path = ["_end"]
 html_css_files = ["end-style.css"]
