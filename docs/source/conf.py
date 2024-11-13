@@ -11,6 +11,11 @@ version = '1.0'
 
 html_last_updated_fmt = "%Y/%m/%d"
 
+# These are options specifically for the Wagtail Theme.
+html_theme_options = {
+  "Github": 'https://github.com/Eineon/PalEnd',
+}
+
 # -- General configuration
 
 extensions = [
@@ -20,6 +25,7 @@ extensions = [
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
     'sphinx_markdown_tables',
+    'sphinx_rtd_theme',
     'recommonmark',
 ]
 
@@ -32,7 +38,7 @@ intersphinx_disabled_domains = ['std']
 templates_path = ['_templates']
 
 # -- Options for HTML output
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'piccolo_theme'
 
 html_static_path = ["_end"]
 html_css_files = ["end-style.css"]

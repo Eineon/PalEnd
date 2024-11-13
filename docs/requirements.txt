@@ -4,3 +4,4 @@ recommonmark
 sphinx
 sphinx-markdown-tables
 sphinx-rtd-theme
+piccolo-theme
