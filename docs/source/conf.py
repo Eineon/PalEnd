@@ -5,11 +5,13 @@
 project = '无色物语'
 copyright = '2024, ネオン様'
 author = 'Eineon'
-
-release = '~ End of The Shining World ~'
 version = '1.0'
 
 html_last_updated_fmt = "%Y/%m/%d"
+
+html_theme_options = {
+    'github_url': 'https://github.com/Eineon/PalEnd',
+}
 
 # -- General configuration
 
@@ -34,6 +36,7 @@ templates_path = ['_templates']
 
 # -- Options for HTML output
 html_theme = 'piccolo_theme'
+html_short_title = "无色物语 ~ End of The Shining World ~"
 
 html_static_path = ["_end"]
 html_css_files = ["end-style.css"]
