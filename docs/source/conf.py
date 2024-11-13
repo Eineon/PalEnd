@@ -31,7 +31,7 @@ intersphinx_disabled_domains = ['std']
 templates_path = ['_templates']
 
 # -- Options for HTML output
-html_theme = 'piccolo_theme'
+html_theme = 'sphinx_material'
 html_short_title = "无色物语 ~ End of The Shining World ~"
 
 html_static_path = ["_end"]
