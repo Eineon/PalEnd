@@ -9,10 +9,6 @@ version = '1.0'
 
 html_last_updated_fmt = "%Y/%m/%d"
 
-html_theme_options = {
-    'github_url': 'https://github.com/Eineon/PalEnd',
-}
-
 # -- General configuration
 
 extensions = [
