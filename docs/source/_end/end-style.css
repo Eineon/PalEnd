@@ -1,0 +1,82 @@
+
+h1 {
+  font-size: 32px;
+}
+h2 {
+  font-size: 26px;
+}
+h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+h5 {
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 0;
+  border-left: 2px solid;
+  padding-left: 5px;
+}
+
+p {
+  font-size: 14px;
+  margin-top: 2px;
+  margin-bottom: 10px;
+}
+
+button {
+  font-size: 14px;
+}
+
+.UP {
+  position: relative;
+}
+.UP span {
+  position: absolute;
+  bottom: 1.5em;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.显隐 {
+  display: none;
+  height: 6em;
+}
+
+.CMT {
+  position: relative; /* 相对定位 */
+  display: inline; /* 布局 */
+  cursor: help; /* 设置鼠标样式 */
+}
+.show {
+  position: absolute; /* 绝对定位 */
+  display: none; /* 初始隐藏 */
+  opacity: 0; /* 初始透明度为0 */
+  top: 80%;
+  left: 80%;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 8px;
+  color: rgb(255,255,255);
+  font-size: 13px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  border: 1px solid rgb(115,207,255);
+  border-radius: 8px;
+  z-index: 9;
+  width: 36em;
+  transition: opacity 0.4s ease; /* 添加过渡效果 */
+}
+.show span {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+.CMT:hover .show {
+  display: block;
+  opacity: 1; /* 鼠标悬停时，透明度为1 */
+}
