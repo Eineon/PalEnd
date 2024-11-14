@@ -1,8 +1,6 @@
 核心规则
 =================================
 
-下载空白角色卡：:download:`end-PlayerCharacterSheet.xlsx`
-
 ..  toctree::
     :maxdepth: 2
 
