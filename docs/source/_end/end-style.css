@@ -11,12 +11,12 @@ h3 {
   font-size: 20px;
   border-bottom: 4px double;
   padding-bottom: 2px;
-  margin-bottom: 0.5em;
+  margin-bottom: 0;
 }
 h4 {
   font-size: 18px;
   border-top: 1px solid;
-  margin-bottom: 0.5em;
+  margin-bottom: 0;
 }
 h5 {
   font-weight: bold;
@@ -28,9 +28,9 @@ h5 {
 
 p {
   font-size: 14px;
-  line-height: 2em;
-  margin-top: 0;
-  margin-bottom: 2em;
+  line-height: 1.5em;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
 }
 
 button {
