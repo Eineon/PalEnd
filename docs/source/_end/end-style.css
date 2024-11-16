@@ -19,14 +19,15 @@ h5 {
   font-weight: bold;
   font-size: 15px;
   margin-bottom: 0;
-  border-left: 5px solid;
-  padding-left: 10px;
+  border-left: 4px solid;
+  padding-left: 1em;
 }
 
 p {
   font-size: 14px;
-  margin-top: 2px;
-  margin-bottom: 10px;
+  line-height: 2em;
+  margin-top: 2em;
+  margin-bottom: 0;
 }
 
 button {
@@ -35,13 +36,15 @@ button {
 
 .UP {
   position: relative;
+  font-weight: bold;
 }
 .UP span {
   position: absolute;
-  bottom: 1.5em;
+  bottom: 120%;
   left: 50%;
   transform: translateX(-50%);
   font-size: 12px;
+  line-height: 0;
   white-space: nowrap;
 }
 
@@ -61,8 +64,8 @@ button {
   opacity: 0; /* 初始透明度为0 */
   top: 80%;
   left: 80%;
-  background-color: rgba(0, 0, 0, 0.8);
-  padding: 8px;
+  background-color: rgba(0,0,0,0.8);
+  padding: 1em;
   color: rgb(255,255,255);
   font-size: 13px;
   margin-top: 2px;
@@ -73,12 +76,14 @@ button {
   width: 36em;
   transition: opacity 0.4s ease; /* 添加过渡效果 */
 }
-.show span {
-  font-weight: bold;
-  font-size: 14px;
-  margin-bottom: 0;
-}
 .CMT:hover .show {
   display: block;
   opacity: 1; /* 鼠标悬停时，透明度为1 */
+}
+.show span {
+  font-weight: bold;
+  font-size: 15px;
+}
+.show hr {
+  margin: 0.5em;
 }

@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function () {
     '架势': '这种效果通常只能在冲突场景中使用。效果会持续到角色离开场景、冲突结束、或执行另一个「时效：架势」动作。',
     '————': '——————————————————————————————————————————————————',
     'BS': 'BS会令角色在特定的能力值上承受等于效果值的状态减值。',
-    '缓慢': '角色每轮的待机值最多可以增加等于效果值的数值。<br>由施加者在待机值每次增加时决定是否增加。<br>每轮开始时，<a href="##">缓慢</a>处境的效果值会与<a href="##">迅捷</a>处境互相抵消。',
+    '缓慢': '角色每轮的待机值最多可以增加等于效果值的数值。<br>由施加者在待机值每次增加时决定是否增加。<br>造成<a href="##">缓慢</a>处境的效果必须成功反制赋予<a href="##">迅捷</a>处境的效果才能生效。',
     '破绽': '角色特定防御类型的防御检定会受到2点减值。',
     '禁足': '角色无法执行<a href="##">移动</a>动作。<br>尝试改变角色位置的<a href="##">移动</a>动作必须成功反制造成<a href="##">禁足</a>处境的效果才能生效。',
     '昏迷': '角色无法主动执行任何动作。',
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function () {
     '持续伤害': '每轮结束时，受到持续伤害的角色会根据伤害类型，在HP或SP上承受损伤，如同受到一次威力与效果值相当的伤害。场景结束时，所有持续伤害都会自动解除。',
     '————': '——————————————————————————————————————————————————',
     'GS': 'GS会令角色在特定的能力值上获得等于效果值的状态加值。',
-    '迅捷': '角色每轮的待机值最多可以降低等于效果值的数值。<br>由角色自身在待机值每次增加时决定是否降低。<br>每轮开始时，<a href="##">迅捷</a>处境的效果值会与<a href="##">缓慢</a>处境互相抵消。',
+    '迅捷': '角色每轮的待机值最多可以降低等于效果值的数值。<br>由角色自身在待机值每次增加时决定是否降低。<br>赋予<a href="##">迅捷</a>处境的效果必须成功反制造成<a href="##">缓慢</a>处境的效果才能生效。',
     '飞行': '角色不会成为近战攻击的有效对象。',
     '————': '——————————————————————————————————————————————————',
   };
@@ -169,16 +169,45 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // 定义格式化函数
   function tagFormat(key, text, value) {
-    return `<span class="CMT"><a href="##">${key}${text}</a><span class="show"><span>◆ ${key}</span><br>——————————————————————————————<br>${value}</span></span>`;
+    return `
+      <span class="CMT">
+        <a href="##">${key}${text}</a>
+        <span class="show">
+          <span>◆ ${key}</span>
+          <hr>
+          ${value}
+        </span>
+      </span>`;
   }
 
   function efctFormat(key, text, value) {
-    return `<span class="CMT"><a href="##">${text}</a><span class="show"><span>◆ ${key}</span><br>——————————————————————————————<br>${value}</span></span>`;
+    return `
+      <span class="CMT">
+        <a href="##">${text}</a>
+        <span class="show">
+          <span>◆ ${key}</span>
+          <hr>
+          ${value}
+        </span>
+      </span>`;
   }
 
-  // 调用函数处理 tagData 和 efctData
+  // 批量插入评论
   insertComments(tagData, '[TAG]', tagFormat);
   insertComments(efctData, '[EFCT]', efctFormat);
+
+  // 处理TIP元素
+  document.querySelectorAll('.TIP').forEach(el => {
+    const tip = el.childNodes[0].nodeValue;
+    const tipText = el.querySelector('span').innerHTML;
+    const commentHtml = `
+      <span class="CMT">
+        <a href="##">${tip}</a>
+        <span class="show">${tipText}</span>
+      </span>`;
+    el.insertAdjacentHTML('afterend', commentHtml);
+    el.remove();
+  });
 
   // 添加鼠标事件处理
   document.querySelectorAll('.CMT').forEach(cmt => {

@@ -17,7 +17,7 @@
 
     .. raw:: html
 
-        <div style="margin-top: 1em;">　　　　——大公爵・<span class=UP><span>アステア</span>阿斯泰尔</span></div>
+        <div style="margin-top: 2em;">　　　　——大公爵・<span class=UP><span>アステア</span>阿斯泰尔</span></div>
 
 ..  toctree::
     :maxdepth: 2
