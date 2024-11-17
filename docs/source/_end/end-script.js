@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
 
   const 显隐元素 = document.querySelectorAll('.显隐');
 
@@ -26,10 +26,44 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const tagData = {
     '————': '——————————————————————————————————————————————————',
+    'GM': 'Game Master<br>游戏的主持人。',
+    'PL': 'Player<br>游戏的玩家。',
+    'PC': 'Player Character<br>游戏玩家扮演的角色。',
+    'NPC': 'Non-Player Character<br>不由游戏玩家扮演的角色。',
+    'LV': 'Level<br>角色的人物等级。',
+    'CR': 'Character Rating<br>角色的阶层，等于人物等级的1/5。',
+    'MR': 'Maneuver Rating<br>游戏中动作的阶层。',
+    'RE': 'Recovery<br>动作的回正时间，代表角色连续执行动作的最短间隔时间。',
+    'STR': 'Strength<br>体能。角色的能力值之一。',
+    'DEX': 'Dexterity<br>协调。角色的能力值之一。',
+    'INS': 'Insight<br>知觉。角色的能力值之一。',
+    'EMP': 'Empathy<br>感性。角色的能力值之一。',
+    'SOU': 'Source<br>根源。角色的能力值之一。',
+    'HR': 'High Roll<br>检定的高值，代表2D10中较高的骰点。',
+    'LR': 'Low Roll<br>检定的低值，代表2D10中较低的骰点。',
+    'AAS': 'Attack Ability Scores<br>攻击检定中使用的能力值。',
+    'ACC': 'Accuracy<br>被动攻击检定的判定值。',
+    'AB': 'Attack Bonus<br>攻击检定的修正值总和。',
+    'DAS': 'Defense Ability Scores<br>防御检定中使用的能力值。',
+    'PSI': 'Psionics<br>被动施术检定的判定值。',
+    'PAS': 'Psychic Ability Scores<br>术源的术法能力值。',
+    'HG': 'Hit Gauge<br>生命量谱。',
+    'HP': 'Hit Points<br>生命值。',
+    'SG': 'Stamina Gauge<br>精力量谱。',
+    'SP': 'Stamina Points<br>精力值。',
+    'LG': 'Link Gauge<br>连结量谱。',
+    'LP': 'Link Points<br>连结值。',
+    'WP': 'Will Power<br>意志力。',
+    'SAN': 'Sanity<br>理智。',
+    'IP': 'Information Points<br>信息点。',
+    'PP': 'Psychic Points<br>术法点。',
+    'DP': 'Damage Points<br>伤害值。',
+    'TP': 'Tactical Points<br>战术点。',
+    '————': '——————————————————————————————————————————————————',
     'N': '这种稀有度的事物非常普遍。未标注稀有度的元素，稀有度默认为N。',
     'R': '这种稀有度的事物需要特殊的训练或特定文化的背景才有可能接触。<a href="##">分析</a>稀有度为R的事物时，达成度会受到4点减值。',
-    'S': '这种稀有度的事物几乎不可能被找到。<a href="##">分析</a>稀有度为R的事物时，达成度会受到8点减值。',
-    'U': '这种稀有度的事物是独一无二的。<a href="##">分析</a>稀有度为R的事物时，达成度会受到12点减值。',
+    'S': '这种稀有度的事物几乎不可能被找到。<a href="##">分析</a>稀有度为S的事物时，达成度会受到8点减值。',
+    'U': '这种稀有度的事物是独一无二的。<a href="##">分析</a>稀有度为U的事物时，达成度会受到12点减值。',
     '————': '——————————————————————————————————————————————————',
     '附赠': '只要角色满足「前置」条件和等级要求，她就会自动习得<a href="##">附赠</a>特技，并且不计入她所能习得的特技总数中。',
     '血脉': '一名角色最多只能习得1项<a href="##">血脉</a>特技。',
@@ -133,81 +167,61 @@ document.addEventListener('DOMContentLoaded', function () {
     '装填': '这种武器每刻只能使用1次。',
     '弹药': '每次使用这种物品都会消耗1发弹药。如果弹药耗尽，则无法再次使用这件物品。角色可以通过【交互】重装1件物品的所有弹药。',
     '————': '——————————————————————————————————————————————————',
-  };
-
-  const efctData = {
-    '————': '——————————————————————————————————————————————————',
     '前进': '对象从后场移动至中场，或从中场移动至前场。<br>位于前场的对象不会因<a href="##">前进</a>改变位置。',
     '后退': '对象从前场移动至中场，或从中场移动至后场。<br>位于后场的对象不会因<a href="##">后退</a>改变位置。',
     '扰乱': '对象随机移动至任何位置，这也可能会令对象未能改变位置。',
     '架势': '这种效果通常只能在冲突场景中使用。效果会持续到角色离开场景、冲突结束、或执行另一个「时效：架势」动作。',
     '————': '——————————————————————————————————————————————————',
-    'BS': 'BS会令角色在特定的能力值上承受等于效果值的状态减值。',
-    '缓慢': '角色每轮的待机值最多可以增加等于效果值的数值。<br>由施加者在待机值每次增加时决定是否增加。<br>造成<a href="##">缓慢</a>处境的效果必须成功反制赋予<a href="##">迅捷</a>处境的效果才能生效。',
+    'BS': 'BS会令角色在特定的能力值上承受等于强度的状态减值。',
+    '缓慢': '角色每轮的待机值最多可以增加等于强度的数值。<br>由施加者在待机值每次增加时决定是否增加。<br>造成<a href="##">缓慢</a>处境的效果必须成功反制赋予<a href="##">迅捷</a>处境的效果才能生效。',
     '破绽': '角色特定防御类型的防御检定会受到2点减值。',
     '禁足': '角色无法执行<a href="##">移动</a>动作。<br>尝试改变角色位置的<a href="##">移动</a>动作必须成功反制造成<a href="##">禁足</a>处境的效果才能生效。',
     '昏迷': '角色无法主动执行任何动作。',
-    '发狂': '每失去1点San值，角色就会承受1项随机的疯狂效应。',
-    '持续伤害': '每轮结束时，受到持续伤害的角色会根据伤害类型，在HP或SP上承受损伤，如同受到一次威力与效果值相当的伤害。场景结束时，所有持续伤害都会自动解除。',
+    '发狂': '每失去1点SAN，角色就会承受1项随机的疯狂效应。',
+    '持续伤害': '每轮结束时，受到持续伤害的角色会根据伤害类型，在HP或SP上承受损伤，如同受到一次威力与强度相当的伤害。场景结束时，所有持续伤害都会自动解除。',
     '————': '——————————————————————————————————————————————————',
-    'GS': 'GS会令角色在特定的能力值上获得等于效果值的状态加值。',
-    '迅捷': '角色每轮的待机值最多可以降低等于效果值的数值。<br>由角色自身在待机值每次增加时决定是否降低。<br>赋予<a href="##">迅捷</a>处境的效果必须成功反制造成<a href="##">缓慢</a>处境的效果才能生效。',
+    'GS': 'GS会令角色在特定的能力值上获得等于强度的状态加值。',
+    '迅捷': '角色每轮的待机值最多可以降低等于强度的数值。<br>由角色自身在待机值每次增加时决定是否降低。<br>赋予<a href="##">迅捷</a>处境的效果必须成功反制造成<a href="##">缓慢</a>处境的效果才能生效。',
     '飞行': '角色不会成为近战攻击的有效对象。',
     '————': '——————————————————————————————————————————————————',
   };
 
-  function insertComments(data, classPrefix, formatFunction) {
-    Object.entries(data).forEach(([key, value]) => {
-      document.querySelectorAll(`[class="${classPrefix}${key}"]`).forEach(el => {
-        const text = el.innerHTML; // 获取标签中的文本内容
-        const commentHtml = formatFunction(key, text, value); // 调用格式化函数
-        el.insertAdjacentHTML('afterend', commentHtml); // 插入新的HTML
-        el.remove(); // 移除原来的标签
-      });
+  const dataRemove = [];
+
+  // 处理 TAG 元素
+  Object.entries(tagData).forEach(([key, value]) => {
+    document.querySelectorAll(`[class="[TAG]${key}"]`).forEach(el => {
+      const textL = el.querySelector('span')?.textContent || '';
+      const textR = el.lastChild?.textContent || '';
+      const commentHtml = `
+        <span class="CMT">
+          <a href="##">${textL}${key}${textR}</a>
+          <span class="show">
+            <span>◆ ${key}</span>
+            <hr>
+            ${value}
+          </span>
+        </span>`;
+      el.insertAdjacentHTML('afterend', commentHtml);
+      dataRemove.push(el);
     });
-  }
+  });
 
-  // 定义格式化函数
-  function tagFormat(key, text, value) {
-    return `
-      <span class="CMT">
-        <a href="##">${key}${text}</a>
-        <span class="show">
-          <span>◆ ${key}</span>
-          <hr>
-          ${value}
-        </span>
-      </span>`;
-  }
-
-  function efctFormat(key, text, value) {
-    return `
-      <span class="CMT">
-        <a href="##">${text}</a>
-        <span class="show">
-          <span>◆ ${key}</span>
-          <hr>
-          ${value}
-        </span>
-      </span>`;
-  }
-
-  // 批量插入评论
-  insertComments(tagData, '[TAG]', tagFormat);
-  insertComments(efctData, '[EFCT]', efctFormat);
-
-  // 处理TIP元素
-  document.querySelectorAll('.TIP').forEach(el => {
+  // 处理 TIP 元素
+  const tipEl = document.querySelectorAll('.TIP');
+  tipEl.forEach(el => {
     const tip = el.childNodes[0].nodeValue;
-    const tipText = el.querySelector('span').innerHTML;
+    const tipText = el.querySelector('span').textContent;
     const commentHtml = `
       <span class="CMT">
         <a href="##">${tip}</a>
         <span class="show">${tipText}</span>
       </span>`;
     el.insertAdjacentHTML('afterend', commentHtml);
-    el.remove();
+    dataRemove.push(el);
   });
+
+  dataRemove.forEach(el => el.remove());
 
   // 添加鼠标事件处理
   document.querySelectorAll('.CMT').forEach(cmt => {
