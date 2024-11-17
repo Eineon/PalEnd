@@ -191,9 +191,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 处理 TAG 元素
   Object.entries(tagData).forEach(([key, value]) => {
-    document.querySelectorAll(`[class="[TAG]${key}"]`).forEach(el => {
+    // 选择所有符合条件的元素
+    const tagEl = document.querySelectorAll(`[class="[TAG]${key}"]`);
+  
+    tagEl.forEach(el => {
+      // 获取 textL 和 textR
       const textL = el.querySelector('span')?.textContent || '';
-      const textR = el.lastChild?.textContent || '';
+      const tagText = el.lastChild?.textContent || '';
+      // 确保 textR 不获取到 textL 的内容
+      const textR = (tagText.trim() === textL.trim()) ? '' : tagText;
+      // 创建 HTML
       const commentHtml = `
         <span class="CMT">
           <a href="##">${textL}${key}${textR}</a>
@@ -203,6 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ${value}
           </span>
         </span>`;
+      // 插入 HTML
       el.insertAdjacentHTML('afterend', commentHtml);
       dataRemove.push(el);
     });
