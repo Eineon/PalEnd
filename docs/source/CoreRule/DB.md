@@ -38,7 +38,7 @@
 **范围**：<前><br>
 ——————————————————————————————<br>
 任何空置的武器装备栏都视为安装了本武器，也同时视为处于空置状态。<br>
-使用本武器的<span class=[TAG]攻击></span>动作进行主动及被动检定时，可以将<span class=[TAG]DEX>><span>当前</span></span>作为<span class=[TAG]AAS></span>。<br>
+使用本武器的<span class=[TAG]攻击></span>动作进行主动及被动检定时，可以将<span class=[TAG]DEX><span>当前</span></span>作为<span class=[TAG]AAS></span>。<br>
 
 ##### 短棒　　　　　｜　武器 0
 <span class=[TAG]物理></span><span class=[TAG]投掷></span><br>
@@ -69,7 +69,7 @@
 **范围**：<前> (近战)|<前>-<中> (远程)<br>
 ——————————————————————————————<br>
 位于中场时，只能通过该武器发动远程攻击。<br>
-使用本武器的<span class=[TAG]攻击></span>动作进行主动及被动检定时，可以将<span class=[TAG]DEX>><span>当前</span></span>作为<span class=[TAG]AAS></span>。<br>
+使用本武器的<span class=[TAG]攻击></span>动作进行主动及被动检定时，可以将<span class=[TAG]DEX><span>当前</span></span>作为<span class=[TAG]AAS></span>。<br>
 
 ##### 短剑　　　　　｜　武器 0
 <span class=[TAG]物理></span><span class=[TAG]近战></span><span class=[TAG]轻型></span><br>
@@ -80,7 +80,7 @@
 **范围**：<前><br>
 ——————————————————————————————<br>
 安装本武器时，可以将负荷增加1点，使武器的威力获得2点加值。<br>
-使用本武器的<span class=[TAG]攻击></span>动作进行主动及被动检定时，可以将<span class=[TAG]DEX>><span>当前</span></span>作为<span class=[TAG]AAS></span>。<br>
+使用本武器的<span class=[TAG]攻击></span>动作进行主动及被动检定时，可以将<span class=[TAG]DEX><span>当前</span></span>作为<span class=[TAG]AAS></span>。<br>
 
 ##### 长剑　　　　　｜　武器 0
 <span class=[TAG]物理></span><span class=[TAG]近战></span><br>
@@ -162,18 +162,18 @@
 **信息**：-/-　｜　**负荷**：0<br>
 ——————————————————————————————<br>
 如果所有防具装备栏都处于空置状态，则视为安装了本防具，也同时视为处于空置状态。<br>
-将<span class=[TAG]DEX>><span>当前</span></span>与<span class=[TAG]INS>><span>当前</span></span>中的较高者作为抗击<span class=[TAG]DAS></span>。<br>
+将<span class=[TAG]DEX><span>当前</span></span>与<span class=[TAG]INS><span>当前</span></span>中的较高者作为抗击<span class=[TAG]DAS></span>。<br>
 
 ##### 轻装　　　　　｜　防具 0
 **信息**：1/1　｜　**负荷**：1<br>
 ——————————————————————————————<br>
-将<span class=[TAG]DEX>><span>当前</span></span>作为抗击<span class=[TAG]DAS></span>，最高不会超过 `4+CR/2` 点。你的被动抗击防御会获得1点内在加值。<br>
+将<span class=[TAG]DEX><span>当前</span></span>作为抗击<span class=[TAG]DAS></span>，最高不会超过 `4+CR/2` 点。你的被动抗击防御会获得1点内在加值。<br>
 安装本防具时，可以将负荷增加1点，使被动抗击防御获得的内在加值提升1点。<br>
 
 ##### 重装　　　　　｜　防具 0
 **信息**：5/2　｜　**负荷**：3<br>
 ——————————————————————————————<br>
-将<span class=[TAG]STR>><span>当前</span></span>作为抗击<span class=[TAG]DAS></span>，最高不会超过 `2+CR/2` 点。你的被动抗击防御会获得3点内在加值。<br>
+将<span class=[TAG]STR><span>当前</span></span>作为抗击<span class=[TAG]DAS></span>，最高不会超过 `2+CR/2` 点。你的被动抗击防御会获得3点内在加值。<br>
 安装本防具时，可以将负荷增加1点，使被动抗击防御获得的内在加值提升1点。<br>
 
 ### 核码
@@ -263,7 +263,7 @@
 <span class=[TAG]开放></span><span class=[TAG]专注></span><br>
 **执行**：标准动作　｜　**代价**：<span class=[TAG]RE> 4</span><br>
 ——————————————————————————————<br>
-针对特定项目进行1次使用<span class=[TAG]INS>><span>当前</span></span>的通识检定。<br>
+针对特定项目进行1次使用<span class=[TAG]INS><span>当前</span></span>的通识检定。<br>
 在每一幕中，针对同一项目的相同方面最多只能执行1次本动作。<br>
 
 |     达成度     | 程度  | 成果                                 |
@@ -495,11 +495,11 @@
 
 ##### 不屈　　　　　｜　通用 0
 **前置**：原初血脉<br>
-**触发**：受到能够将你的<span class=[TAG]HP>><span>当前</span></span>降至0的攻击伤害时<br>
+**触发**：受到能够将你的<span class=[TAG]HP><span>当前</span></span>降至0的攻击伤害时<br>
 **执行**：自由动作<br>
 **频率**：1次/3场景<br>
 ——————————————————————————————<br>
-触发本动作的伤害只会使你的<span class=[TAG]HP>><span>当前</span></span>降至1点。<br>
+触发本动作的伤害只会使你的<span class=[TAG]HP><span>当前</span></span>降至1点。<br>
 
 ##### 亡灵焦渴　　　｜　通用 0
 **前置**：原罪血脉<br>
@@ -798,9 +798,9 @@
 **触发**：你的近战武器攻击造成损伤<span class=[TAG]HP></span>的伤害时<br>
 **执行**：即时动作　｜　**代价**：<span class=[TAG]SP> 2</span><br>
 ——————————————————————————————<br>
-如果触发本动作的角色的<span class=[TAG]HP>><span>当前</span></span>不超过 `ACC-10` 点，则将其<span class=[TAG]HP>><span>当前</span></span>降至0点。<br>
-<span class=[TAG]闲角>级</span>角色触发本动作时，无论剩余多少<span class=[TAG]HP>><span>当前</span></span>，都会被降至0点。<br>
-如果本动作未能将触发角色的<span class=[TAG]HP>><span>当前</span></span>降至0点，则你无需支付因此产生的<span class=[TAG]SP></span>消耗。<br>
+如果触发本动作的角色的<span class=[TAG]HP><span>当前</span></span>不超过 `ACC-10` 点，则将其<span class=[TAG]HP><span>当前</span></span>降至0点。<br>
+<span class=[TAG]闲角>级</span>角色触发本动作时，无论剩余多少<span class=[TAG]HP><span>当前</span></span>，都会被降至0点。<br>
+如果本动作未能将触发角色的<span class=[TAG]HP><span>当前</span></span>降至0点，则你无需支付因此产生的<span class=[TAG]SP></span>消耗。<br>
 
 ##### 战斗反射　　　｜　武者 5
 ——————————————————————————————<br>
