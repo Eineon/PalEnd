@@ -3,7 +3,7 @@
 # -- Project information
 
 project = '无色物语'
-# html_title = '无色物语'
+html_title = '无色物语'
 
 copyright = '2024, ネオン様'
 author = 'Eineon'
