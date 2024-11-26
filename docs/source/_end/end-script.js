@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'MR': `
       Maneuver Rating<br>游戏中动作的阶层。`,
     'RE': `
-      Recovery<br>动作的回正时间，代表角色连续执行动作的最短间隔时间。`,
+      Recovery<br>动作的回正时间，代表角色连续执行动作的间隔时间。`,
     'STR': `
       Strength<br>体能。角色的能力值之一。`,
     'DEX': `
@@ -369,34 +369,46 @@ document.addEventListener('DOMContentLoaded', () => {
     '————': `——————————————————————————————————————————————————`,
   };
 
-  const dataRemove = [];
+  function replaceText() {
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    const regex = /《([^|]*)\|([^|]+)\|([^》]*)》/g;
+    let nodesToReplace = [];
+    let node;
+    while (node = walker.nextNode()) {
+      // 检查当前节点是否包含需要替换的文本
+      if (regex.test(node.nodeValue)) {
+        nodesToReplace.push(node);
+      }
+    }
+    // 遍历需要替换的节点并进行替换
+    nodesToReplace.forEach(node => {
+      const newHTML = node.nodeValue.replace(regex, (_, textL, textK, textR) => {
+        const value = tagData[textK] || ''; // 使用 textK 查找对应的值
+        return `
+          <span class="CMT">
+            <a href="##">${textL || ''}${textK}${textR || ''}</a>
+            <span class="show">
+              <span>◆ ${textK}</span>
+              <hr>
+              ${value}
+            </span>
+          </span>`;
+      });
+      // 仅在 newHTML 不等于原节点值时进行替换
+      if (newHTML !== node.nodeValue) {
+        // 创建一个新的 span 元素并将新 HTML 插入其中
+        const span = document.createElement('span');
+        span.innerHTML = newHTML; // 将新 HTML 插入到 span 中
 
-  // 处理 TAG 元素
-  Object.entries(tagData).forEach(([key, value]) => {
-    // 选择所有符合条件的元素
-    const tagEl = document.querySelectorAll(`[class="[TAG]${key}"]`);
-
-    tagEl.forEach(el => {
-      // 获取 textL 和 textR
-      const textL = el.querySelector('span')?.textContent || '';
-      const tagText = el.lastChild?.textContent || '';
-      // 确保 textR 不获取到 textL 的内容
-      const textR = (tagText.trim() === textL.trim()) ? '' : tagText;
-      // 创建 HTML
-      const commentHtml = `
-        <span class="CMT">
-          <a href="##">${textL}${key}${textR}</a>
-          <span class="show">
-            <span>◆ ${key}</span>
-            <hr>
-            ${value}
-          </span>
-        </span>`;
-      // 插入 HTML
-      el.insertAdjacentHTML('afterend', commentHtml);
-      dataRemove.push(el);
+        // 替换原节点
+        node.parentNode.replaceChild(span, node);
+      }
     });
-  });
+  }
+  // 执行替换操作
+  replaceText();
+
+  const dataRemove = [];
 
   // 处理 TIP 元素
   const tipEl = document.querySelectorAll('.TIP');
