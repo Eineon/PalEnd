@@ -64,6 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
       Attack Bonus<br>攻击检定的修正值总和。`,
     'DAS': `
       Defense Ability Scores<br>防御检定中使用的能力值。`,
+    'PR': `
+      Protection<br>被动防御检定的判定值。`,
+    'DB': `
+      Defense Bonus<br>防御检定的修正值总和。`,
     'PSI': `
       Psionics<br>被动施术检定的判定值。`,
     'PAS': `
