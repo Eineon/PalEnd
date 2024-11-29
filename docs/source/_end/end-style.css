@@ -82,8 +82,3 @@ button {
   display: block;
   opacity: 1; /* 鼠标悬停时，透明度为1 */
 }
-.show span {
-  font-weight: bold;
-  font-size: 15px;
-}
-

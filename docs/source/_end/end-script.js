@@ -281,9 +281,9 @@ document.addEventListener('DOMContentLoaded', () => {
       type: `标签`,
       value: `配角级敌人实力与同等级的PC相当。`,
     },
-    '领袖': {
+    '精英': {
       type: `标签`,
-      value: `领袖级敌人的实力至少是同等级PC的两倍。`,
+      value: `精英级敌人的实力至少是同等级PC的两倍。`,
     },
     '冠位': {
       type: `标签`,
@@ -608,9 +608,8 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     '两用': {
       type: `标签`,
-      value: `这种武器既可以用来发动近战武器，也可以用来发动远程攻击。<br>
-      <a href=##>两用</a>武器同时视为<a href=##>近战</a>武器与<a href=##>远程</a>武器。<br>
-      这类武器通常会列出2个范围，视为<a href=##>近战</a>武器时只能使用近战范围，视为<a href=##>远程</a>武器时只能使用远程范围。`,
+      value: `这种武器既可以用来发动近战武器，也可以用来发动远程攻击。<a href=##>两用</a>武器同时视为<a href=##>近战</a>武器与<a href=##>远程</a>武器。<br>
+      在视为不同类型的武器时也会使用不同的范围。视为<a href=##>近战</a>武器时只能使用近战范围，视为<a href=##>远程</a>武器时只能使用远程范围。`,
     },
     '轻型': {
       type: `标签`,
@@ -700,36 +699,29 @@ document.addEventListener('DOMContentLoaded', () => {
   function replaceText() {
     const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
     const regex = /《([^|]*)\|([^|]+)\|([^》]*)》/g;
-    let nodesToReplace = [];
     let node;
     while (node = walker.nextNode()) {
-      // 检查当前节点是否包含需要替换的文本
-      if (regex.test(node.nodeValue)) {
-        nodesToReplace.push(node);
-      }
-    }
-    // 替换收集到的节点中的文本
-    nodesToReplace.forEach(node => {
-      const newHTML = node.nodeValue.replace(regex, (_, textL, textK, textR) => {
-        const tagInfo = tagData[textK]; // 根据 textK 获取标签信息
+      // 检查文本内容是否匹配正则表达式
+      if (!regex.test(node.nodeValue)) continue;
+      // 替换收集到的节点中的文本
+      const tagHtml = node.nodeValue.replace(regex, (_, textL, textK, textR) => {
+        const tagInfo = tagData[textK]; // 根据 textK 获取 tag 信息
         return `<span class="CMT"><a href="##">${textL || ''}${textK}${textR || ''}</a><span class="show">
         <table style="width: 100%">
-          <tr><th><table style="width: 100%; font-size: 15px;">
-            <tr style="border-bottom: 1px solid white;">
-              <td style="width: 75%;">◆ ${textK}</td>
-              <td style="width: 25%;">｜　${tagInfo.type}</td>
+          <tr><th><table style="width: 100%; font-size: 15px">
+            <tr style="border-bottom: 0.5px solid white">
+              <td style="width: 75%">◢ ${textK}</td>
+              <td style="width: 25%">｜　${tagInfo.type}</td>
             </tr>
           </table></th></tr>
           <tr><td>${tagInfo.value}</td></tr>
         </table></span></span>`;
       });
-      // 仅在 newHTML 与原节点值不同时进行替换
-      if (newHTML !== node.nodeValue) {
-        const span = document.createElement('span');
-        span.innerHTML = newHTML; // 将新 HTML 插入到 span 中
-        node.parentNode.replaceChild(span, node); // 替换原节点
-      }
-    });
+      const tagSpan = document.createElement('span');
+      tagSpan.innerHTML = tagHtml;
+      node.parentNode.replaceChild(tagSpan, node);
+      walker.currentNode = tagSpan;
+    }
   }
   // 执行替换操作
   replaceText();
