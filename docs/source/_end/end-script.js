@@ -67,15 +67,15 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     'INS': {
       type: `术语`,
-      value: `Insight<br>聪颖。角色的能力值之一。`,
+      value: `Insight<br>知觉。角色的能力值之一。`,
     },
-    'EMP': {
+    'FEL': {
       type: `术语`,
-      value: `Empathy<br>感性。角色的能力值之一。`,
+      value: `Feeling<br>感应。角色的能力值之一。`,
     },
     'WIS': {
       type: `术语`,
-      value: `Wisdom<br>灵知。角色的能力值之一。`,
+      value: `Wisdom<br>灵性。角色的能力值之一。`,
     },
     'HR': {
       type: `术语`,
@@ -145,10 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
       type: `术语`,
       value: `Will Power<br>意志力。`,
     },
-    'SAN': {
-      type: `术语`,
-      value: `Sanity<br>理智。`,
-    },
     'IP': {
       type: `术语`,
       value: `Information Points<br>信息点。`,
@@ -199,7 +195,13 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     '唤醒': {
       type: `标签`,
-      value: `一旦习得某种<b>原型</b>的<a href=##>唤醒</a>特技，直到习得至少5个属于该<b>原型</b>的特技 (含<a href=##>唤醒</a>特技) 为止，无法再习得其他的<a href=##>唤醒</a>特技。`,
+      value: `一旦习得这种<b>原型</b>的<a href=##>唤醒</a>特技，直到习得至少5个属于该<b>原型</b>的特技 (含<a href=##>唤醒</a>特技) 为止，无法再习得其他的<a href=##>唤醒</a>特技。`,
+    },
+    '美德': {
+      type: `标签`,
+      value: `角色可以在狂气检定大成功时触发1项已习得的<a href=##>美德</a>特技，也可以像普通的动作那样执行<a href=##>美德</a>特技。<br>
+      在狂气检定大成功时触发的<a href=##>美德</a>特技，无需在执行时支付代价。<br>
+      如果在维持一项<a href=##>美德</a>特技时再次执行<a href=##>美德</a>特技，之前维持的那项<a href=##>美德</a>特技会立即结束。`,
     },
 
 
@@ -213,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
       type: `范围`,
       value: `当使用者位于前场时，可以将同样位于前场的角色作为对象。在前场之外的位置执行这种动作，将会导致动作使用失败。`,
     },
-    '近距': {
+    '短距': {
       type: `范围`,
       value: `当使用者位于前场时，可以将位于前场或中场的角色作为对象。如果使用者位于中场，则可以将位于前场的角色作为对象。位于后场时将使用失败。`,
     },
@@ -221,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
       type: `范围`,
       value: `当使用者位于前场或中场时，可以将位于前场、中场、后场的角色作为对象。如果使用者位于后场，则可以将位于前场或中场的角色作为对象。`,
     },
-    '远距': {
+    '长距': {
       type: `范围`,
       value: `无论使用者处于哪个位置，都可以将位于前场、中场、后场的角色作为对象。`,
     },
@@ -552,9 +554,17 @@ document.addEventListener('DOMContentLoaded', () => {
       type: `标签`,
       value: `这种效果会造成冻伤，并可以反制<a href=##>火焰</a>效果。`,
     },
+    '强酸': {
+      type: `标签`,
+      value: `这种效果会造成腐蚀。`,
+    },
     '失血': {
       type: `标签`,
-      value: `这种效果会导致血液的缺失。没有血液的生物免疫<a href=##>失血</a>效果。`,
+      value: `这种效果会导致血液的缺失。没有血液的个体免疫<a href=##>失血</a>效果。`,
+    },
+    '毒素': {
+      type: `标签`,
+      value: `这种效果会导致中毒。`,
     },
 
 
@@ -667,7 +677,9 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     '发狂': {
       type: `处境`,
-      value: `每失去1点SAN，角色就会承受1项随机的疯狂效应。`,
+      value: `角色每条《|HG|》的容量都会降低等于发狂级别的点数。
+      当角色的发狂级别提升至2~4级中的任意级别时，都会受到1项随机的「疯狂效应」。
+      当角色的发狂级别提升至5级时，她的《当前|HP|》与《当前|SP|》会降至0点，直到发狂级别低于5级。`,
     },
     '持续伤害': {
       type: `处境`,
