@@ -766,21 +766,22 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   };
 
+  const regex = /《([^|]*)\|([^|]+)\|([^》]*)》/g;
   function replaceText() {
     const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-    const regex = /《([^|]*)\|([^|]+)\|([^》]*)》/g;
     let node;
     while (node = walker.nextNode()) {
       // 检查文本内容是否匹配正则表达式
-      const matches = [...node.nodeValue.matchAll(regex)];
-      // 如果没有匹配项，则继续
-      if (matches.length === 0) continue;
+      if (!regex.test(node.nodeValue)) continue;
       // 替换收集到的节点中的文本
-      let tagHtml = node.nodeValue;
-      matches.forEach(match => {
-        const [fullMatch, textL, textK, textR] = match;
+      const tagHtml = node.nodeValue.replace(regex, (_, textL, textK, textR) => {
         const tagInfo = tagData[textK]; // 根据 textK 获取 tag 信息
-        const replacement = `<span class="CMT"><a href="##">${textL || ''}${textK}${textR || ''}</a><span class="show">
+        // 检查 tagInfo 是否存在
+        if (!tagInfo) {
+          return `<a href="##">{内容缺失：${textK}}</a>`; // 如果不存在，返回原始文本
+        }
+        // 如果存在，构建替换后的 HTML
+        return `<span class="CMT"><a href="##">${textL || ''}${textK}${textR || ''}</a><span class="show">
         <table style="width: 100%">
           <tr><th><table style="width: 100%; font-size: 15px">
             <tr style="border-bottom: 0.5px solid white">
@@ -790,19 +791,15 @@ document.addEventListener('DOMContentLoaded', () => {
           </table></th></tr>
           <tr><td>${tagInfo.value}</td></tr>
         </table></span></span>`;
-        // 用替换内容更新 tagHtml
-        tagHtml = tagHtml.replace(fullMatch, replacement);
       });
       const tagSpan = document.createElement('span');
       tagSpan.innerHTML = tagHtml;
       node.parentNode.replaceChild(tagSpan, node);
-      // 更新 walker 的当前节点为新创建的 span
       walker.currentNode = tagSpan;
     }
   }
   // 执行替换操作
   replaceText();
-
 
   const dataRemove = [];
 
