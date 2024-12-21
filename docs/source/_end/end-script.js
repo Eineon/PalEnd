@@ -828,7 +828,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <tr><th><table style="width: 100%; font-size: 15px">
             <tr style="border-bottom: 0.5px solid white">
               <td style="width: 75%">◢ ${textK}</td>
-              <td style="width: 25%; text-align: center; border-left: 4px solid white">${tagInfo.type}</td>
+              <td style="width: 25%; text-align: center; border-left: 0.5px dashed white">${tagInfo.type}</td>
             </tr>
           </table></th></tr>
           <tr><td>${tagInfo.value}</td></tr>
