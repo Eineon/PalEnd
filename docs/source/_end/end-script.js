@@ -713,7 +713,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     '反冲': {
       type: `武器特性`,
-      value: `每当使用这种武器的攻击造成伤害时，攻击者都会失去 <code>武器负荷*2</code> 点《|HP|》。如果攻击过当，则因此失去的HP减半。`,
+      value: `每当使用这种武器的攻击造成伤害时，攻击者都会失去 <code>武器负荷*2</code> 点《|HP|》。如果攻击错位，则因此失去的HP减半。`,
     },
     '装填': {
       type: `武器特性`,
@@ -828,7 +828,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <tr><th><table style="width: 100%; font-size: 15px">
             <tr style="border-bottom: 0.5px solid white">
               <td style="width: 75%">◢ ${textK}</td>
-              <td style="width: 25%; text-align: center; border-left: 0.5px dashed white">${tagInfo.type}</td>
+              <td style="width: 25%; text-align: center; font-size: 14px">${tagInfo.type}</td>
             </tr>
           </table></th></tr>
           <tr><td>${tagInfo.value}</td></tr>
