@@ -34,15 +34,15 @@ p {
 }
 
 /* 设置超链接的样式 */
-a,
-body.theme-dark a {
+p a,
+body.theme-dark p a {
   position: relative; /* 为伪元素定位做准备 */
   background-color: transparent; /* 初始背景颜色透明 */
-  transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1), /* 文字颜色过渡效果 */
-              background-color 150ms cubic-bezier(0.4, 0, 0.2, 1); /* 背景颜色过渡效果 */
+  transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1), /* 文字颜色过渡效果 */
+              background-color 200ms cubic-bezier(0.4, 0, 0.2, 1); /* 背景颜色过渡效果 */
 }
 /* 使用伪元素实现背景颜色从下到上填充的过渡效果 */
-a::before {
+p a::before {
   content: "";
   position: absolute;
   left: 0;
@@ -51,17 +51,16 @@ a::before {
   top: 100%;
   background-color: #3BECCD; /* 设置背景颜色 */
   z-index: -1;
-  transition: top 300ms cubic-bezier(0.4, 0, 0.2, 1); /* 背景位置过渡效果 */
+  transition: top 400ms cubic-bezier(0.4, 0, 0.2, 1); /* 背景位置过渡效果 */
 }
 /* 设置超链接在悬停、激活和聚焦时的样式 */
-a:hover::before {
+p a:hover::before {
   top: 0; /* 背景位置从下到上过渡 */
 }
-a:not(.headerlink):hover,
+p a:hover,
 .show a:hover,
-body.theme-dark a:not(.headerlink):hover,
-body.theme-dark .show a:hover,
-.page-toc a:hover {
+body.theme-dark p a:hover,
+body.theme-dark .show a:hover {
   color: #2e1f5e; /* 悬停时的文字颜色 */
   text-decoration: none; /* 去掉下划线 */
 }
@@ -104,7 +103,7 @@ body.theme-dark .show a:hover,
   border-radius: 8px;
   z-index: 9999;
   width: 33em;
-  transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1), visibility 0s 300ms; /* 透明度过渡效果 */
+  transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1), visibility 0s 400ms; /* 透明度过渡效果 */
 }
 .show a,
 body.theme-dark .show a {

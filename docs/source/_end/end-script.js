@@ -885,8 +885,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const showElement = cmt.querySelector('.show');
       showElement.style.opacity = '0'; // 设置透明度为0以开始渐变消失
       setTimeout(() => {
-        showElement.style.display = 'none'; // 在透明度变为0后隐藏提示窗
-      }, 500); // 设置延迟时间
+        showElement.style.display = 'none'; // 在一段时间后隐藏提示窗
+      }, 400); // 设置延迟时间
     });
   });
 

@@ -43,9 +43,9 @@ html_theme_options = dict(
     logo_alt = "回到首页",
     logo_height = 64,
     logo_width = 64,
-    github_url = "https://github.com/Eineon/PalEnd/tree/main/docs/source",
+    github_url = "https://github.com/Eineon/PalEnd/tree/main/docs/source/",
     footer_links = ",".join([
-        "Github|https://github.com/Eineon/PalEnd",
+        "更新日志|https://github.com/Eineon/PalEnd/commits/main/",
     ]),
 )
 html_last_updated_fmt = '%Y/%m/%d'
