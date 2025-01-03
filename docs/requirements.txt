@@ -4,4 +4,4 @@ recommonmark
 sphinx
 sphinx-markdown-tables
 sphinx_rtd_theme
-sphinx-book-theme
+sphinx-wagtail-theme

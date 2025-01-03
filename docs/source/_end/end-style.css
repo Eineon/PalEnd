@@ -1,26 +1,18 @@
-html[data-theme=dark],
-html[data-theme=light] {
-  --pst-color-secondary: rgb(255,255,255);
-}
-
 h1 {
   font-size: 32px;
-}
-h2 {
-  font-size: 26px;
   border-bottom: 2px solid;
   padding-bottom: 6px;
 }
+h2 {
+  font-size: 26px;
+}
 h3 {
   font-size: 20px;
-  border-bottom: 4px double;
-  padding-bottom: 4px;
-  margin-bottom: 0;
 }
 h4 {
   font-size: 18px;
-  border-top: 1px solid;
-  padding-top: 2px;
+  border-bottom: 4px double;
+  padding-bottom: 4px;
   margin-bottom: 0;
 }
 h5 {
@@ -30,23 +22,55 @@ h5 {
   border-left: 4px solid;
   padding-left: 1em;
 }
-
 p {
   font-size: 14px;
   line-height: 2em;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+*:focus {
+  outline: none !important;
+  outline-offset: 0;
 }
 
-button {
-  font-size: 14px;
+/* 设置超链接的样式 */
+a,
+body.theme-dark a {
+  position: relative; /* 为伪元素定位做准备 */
+  background-color: transparent; /* 初始背景颜色透明 */
+  transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1), /* 文字颜色过渡效果 */
+              background-color 150ms cubic-bezier(0.4, 0, 0.2, 1); /* 背景颜色过渡效果 */
+}
+/* 使用伪元素实现背景颜色从下到上填充的过渡效果 */
+a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 100%;
+  background-color: #3BECCD; /* 设置背景颜色 */
+  z-index: -1;
+  transition: top 300ms cubic-bezier(0.4, 0, 0.2, 1); /* 背景位置过渡效果 */
+}
+/* 设置超链接在悬停、激活和聚焦时的样式 */
+a:hover::before {
+  top: 0; /* 背景位置从下到上过渡 */
+}
+a:not(.headerlink):hover,
+.show a:hover,
+body.theme-dark a:not(.headerlink):hover,
+body.theme-dark .show a:hover,
+.page-toc a:hover {
+  color: #2e1f5e; /* 悬停时的文字颜色 */
+  text-decoration: none; /* 去掉下划线 */
 }
 
 .UP {
   position: relative;
   font-weight: bold;
 }
-.UP span {
+.UP .note {
   position: absolute;
   bottom: 120%;
   left: 50%;
@@ -68,60 +92,26 @@ button {
 }
 .show {
   position: absolute; /* 绝对定位 */
-  display: none; /* 初始隐藏 */
   opacity: 0; /* 初始透明度为0 */
-  top: 80%;
-  left: 80%;
-  background-color: rgba(0,0,0,0.9);
+  pointer-events: none; /* 禁用鼠标事件 */
+  top: 100%;
+  left: -0.5em;
+  background-color: rgba(0,0,0,0.8);
   padding: 1em;
   color: rgb(255,255,255);
   font-size: 13px;
-  border: 1px solid rgb(49,155,224);
+  border: 1.5px solid #13C7A8;
   border-radius: 8px;
-  z-index: 9;
-  width: 32em;
-  transition: opacity 150ms ease; /* 添加过渡效果 */
+  z-index: 9999;
+  width: 33em;
+  transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1), visibility 0s 300ms; /* 透明度过渡效果 */
+}
+.show a,
+body.theme-dark .show a {
+  color: #FFFFFF;
 }
 .CMT:hover .show {
-  display: block;
-  opacity: 1; /* 鼠标悬停时，透明度为1 */
-}
-
-/* 设置超链接的样式 */
-a {
-  position: relative; /* 为伪元素定位做准备 */
-  background-color: transparent; /* 初始背景颜色透明 */
-  text-decoration: none; /* 去掉下划线 */
-  transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1), /* 文字颜色过渡效果 */
-              background-color 150ms cubic-bezier(0.4, 0, 0.2, 1); /* 背景颜色过渡效果 */
-}
-/* 使用伪元素实现背景颜色从下到上填充的过渡效果 */
-a::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 100%;
-  background-color: var(--pst-color-primary); /* 设置背景颜色 */
-  z-index: -1;
-  transition: top 300ms cubic-bezier(0.4, 0, 0.2, 1); /* 背景位置过渡效果 */
-}
-/* 设置超链接在悬停、激活和聚焦时的样式 */
-a:hover::before,
-a:active::before,
-a:focus::before {
-  top: 0; /* 背景位置从下到上过渡 */
-}
-a:hover,
-a:active,
-a:focus {
-  color: rgb(255,255,255); /* 悬停时的文字颜色 */
-  text-decoration: none; /* 去掉下划线 */
-}
-p a {
-  text-decoration: underline; /* 段落中的超链接添加下划线 */
-  text-decoration-color: var(--pst-color-primary); /* 设置下划线颜色 */
-  text-decoration-thickness: 2px; /* 设置下划线的厚度 */
-  text-underline-offset: 2.5px; /* 设置下划线与文本的距离 */
+  display: block; /* 显示元素 */
+  opacity: 1; /* 透明度为1 */
+  pointer-events: auto; /* 启用鼠标事件 */
 }

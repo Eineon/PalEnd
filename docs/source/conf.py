@@ -3,9 +3,7 @@
 # -- Project information
 
 project = '无色物语'
-html_title = '无色物语'
-
-copyright = '2024, ネオン様'
+copyright = '2025, ネオン様'
 author = 'Eineon'
 
 version = '1.0'
@@ -19,6 +17,7 @@ extensions = [
     'sphinx.ext.intersphinx',
     'sphinx_markdown_tables',
     'sphinx_rtd_theme',
+    'sphinx_wagtail_theme',
     'recommonmark',
 ]
 
@@ -36,13 +35,20 @@ html_css_files = ['end-style.css']
 html_js_files = ['end-script.js']
 
 # -- HTML theme settings
-html_show_sourcelink = True
+extensions.append("sphinx_wagtail_theme")
+html_theme = 'sphinx_wagtail_theme'
+html_theme_options = dict(
+    project_name = "无色物语 ~ 幻日序曲 ~",
+    logo = "logo.svg",
+    logo_alt = "回到首页",
+    logo_height = 64,
+    logo_width = 64,
+    github_url = "https://github.com/Eineon/PalEnd/tree/main/docs/source",
+    footer_links = ",".join([
+        "Github|https://github.com/Eineon/PalEnd",
+    ]),
+)
 html_last_updated_fmt = '%Y/%m/%d'
-html_theme = 'sphinx_book_theme'
-html_theme_options = {
-    "repository_url": "https://github.com/Eineon/PalEnd",
-    "use_repository_button": True,
-}
 
 # -- Options for HTMLHelp output
 htmlhelp_basename = '无色物语'
