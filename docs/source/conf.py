@@ -18,7 +18,7 @@ extensions = [
     'sphinx_markdown_tables',
     'sphinx_rtd_theme',
     'sphinx_wagtail_theme',
-    'recommonmark',
+    'myst_parser',
 ]
 
 intersphinx_mapping = {
@@ -35,7 +35,6 @@ html_css_files = ['end-style.css']
 html_js_files = ['end-script.js']
 
 # -- HTML theme settings
-extensions.append("sphinx_wagtail_theme")
 html_theme = 'sphinx_wagtail_theme'
 html_theme_options = dict(
     project_name = "无色物语 ~ 幻日序曲 ~",
@@ -61,10 +60,6 @@ latex_engine = 'xelatex'
 latex_use_xindy = False
 latex_elements = {
     'preamble': '\\usepackage[UTF8]{ctex}\n',
-}
-
-source_parsers = {
-    '.md': 'recommonmark.parser.CommonMarkParser',
 }
 
 source_suffix = ['.rst', '.md']

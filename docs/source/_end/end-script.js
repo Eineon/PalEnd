@@ -57,46 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
       type:  `术语`,
       value: `Wisdom<br>灵性。角色的能力值之一。`,
     },
-    'HR': {
-      type:  `术语`,
-      value: `High Roll<br>检定的高值，代表2D10中较高的骰点。`,
-    },
-    'LR': {
-      type:  `术语`,
-      value: `Low Roll<br>检定的低值，代表2D10中较低的骰点。`,
-    },
-    'AAS': {
-      type:  `术语`,
-      value: `Attack Ability Scores<br>攻击检定中使用的能力值。`,
-    },
-    'ACC': {
-      type:  `术语`,
-      value: `Accuracy<br>被动攻击检定的判定值。`,
-    },
-    'AB': {
-      type:  `术语`,
-      value: `Attack Bonus<br>攻击检定的修正值总和。`,
-    },
-    'DAS': {
-      type:  `术语`,
-      value: `Defense Ability Scores<br>防御检定中使用的能力值。`,
-    },
-    'PRO': {
-      type:  `术语`,
-      value: `Protection<br>被动防御检定的判定值。`,
-    },
-    'DB': {
-      type:  `术语`,
-      value: `Defense Bonus<br>防御检定的修正值总和。`,
-    },
-    'PSI': {
-      type:  `术语`,
-      value: `Psionics<br>被动施术检定的判定值。`,
-    },
-    'PAS': {
-      type:  `术语`,
-      value: `Psychic Ability Scores<br>术源的术法能力值。`,
-    },
     'HP': {
       type:  `术语`,
       value: `Hit Points<br>压力值。`,
@@ -120,6 +80,58 @@ document.addEventListener('DOMContentLoaded', () => {
     'IP': {
       type:  `术语`,
       value: `Information Points<br>信息点。`,
+    },
+    'HR': {
+      type:  `术语`,
+      value: `High Roll<br>检定的高值，代表2D10中较高的骰点。`,
+    },
+    'LR': {
+      type:  `术语`,
+      value: `Low Roll<br>检定的低值，代表2D10中较低的骰点。`,
+    },
+    'SR': {
+      type:  `术语`,
+      value: `Save Range<br>被动检定的判定值。`,
+    },
+    'TAS': {
+      type:  `术语`,
+      value: `Technique Ability Scores<br>技能检定中使用的能力值。`,
+    },
+    'TB': {
+      type:  `术语`,
+      value: `Technique Bonus<br>技能检定的修正值总和。`,
+    },
+    'AAS': {
+      type:  `术语`,
+      value: `Attack Ability Scores<br>攻击检定中使用的能力值。`,
+    },
+    'AB': {
+      type:  `术语`,
+      value: `Attack Bonus<br>攻击检定的修正值总和。`,
+    },
+    'ACC': {
+      type:  `术语`,
+      value: `Accuracy<br>被动武器攻击检定的判定值。`,
+    },
+    'PSI': {
+      type:  `术语`,
+      value: `Psionics<br>被动术法攻击检定的判定值。`,
+    },
+    'DAS': {
+      type:  `术语`,
+      value: `Defense Ability Scores<br>防御检定中使用的能力值。`,
+    },
+    'DB': {
+      type:  `术语`,
+      value: `Defense Bonus<br>防御检定的修正值总和。`,
+    },
+    'PAS': {
+      type:  `术语`,
+      value: `Psychic Ability Scores<br>术源的术法能力值。`,
+    },
+    'PB': {
+      type:  `术语`,
+      value: `Psychic Bonus<br>施术检定的修正值总和。`,
     },
     'PP': {
       type:  `术语`,
@@ -232,10 +244,6 @@ document.addEventListener('DOMContentLoaded', () => {
       type:  `标签`,
       value: `<a href=##>限定</a>特技无法通过【整备】习得。`,
     },
-    '技艺': {
-      type:  `标签`,
-      value: `这种特技与特定的<a href=##>技艺</a>类型相关。`,
-    },
     '道途': {
       type:  `标签`,
       value: `角色最多只能习得1项<a href=##>道途</a>类型相同的特技。`,
@@ -244,6 +252,10 @@ document.addEventListener('DOMContentLoaded', () => {
       type:  `标签`,
       value: `当角色习得一项<a href=##>原型</a>特技后，她可以在通过【整备】从职业领域中习得特技时，将相同的原型标签赋予这些特技。同一特技最多只能拥有1种原型标签。<br>
       为已习得的特技原型标签，是1个需要支付1点时序的【整备】选项，目标特技同样必须通过【整备】习得。`,
+    },
+    '技艺': {
+      type:  `标签`,
+      value: `这种特技与特定技能相关。习得这种特技的总数不能超过角色在相应技能上的等级。`,
     },
 
 
@@ -831,10 +843,10 @@ document.addEventListener('DOMContentLoaded', () => {
           // 如果存在，构建替换后的 HTML
           return `<span class="CMT"><a href="##">${textL || ''}${textK}${textR || ''}</a><span class="show">
           <table style="width: 100%">
-            <tr><th><table style="width: 100%; font-size: 15px">
+            <tr><th><table style="width: 100%">
               <tr style="border-bottom: 0.5px solid white">
-                <td style="width: 75%; vertical-align: top">❖ ${textK}</td>
-                <td style="width: 25%; vertical-align: bottom; font-size: 13px">${tagInfo.type}</td>
+                <td style="font-size: 15px">❖ ${textK}</td>
+                <td style="width: 5em; vertical-align: bottom; font-size: 13px">${tagInfo.type}</td>
               </tr>
             </table></th></tr>
             <tr><td>${tagInfo.value}</td></tr>

@@ -1,6 +1,6 @@
 commonmark
 pillow
-recommonmark
+myst-parser
 sphinx
 sphinx-markdown-tables
 sphinx_rtd_theme
