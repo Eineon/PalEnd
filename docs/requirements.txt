@@ -1,7 +1,0 @@
-commonmark
-pillow
-myst-parser
-sphinx
-sphinx-markdown-tables
-sphinx_rtd_theme
-sphinx-wagtail-theme
